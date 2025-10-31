@@ -17,15 +17,39 @@
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, -10px); }
+            100% { transform: translate(0, 0px); }
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
     </style>
 </head>
 <body class="bg-gray-50 font-sans">
     <!-- Navigation -->
-    <nav class="bg-white shadow-lg sticky top-0 z-50">
+    <nav class="bg-white/90 backdrop-blur-md shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center space-x-2">
-                    <i class="fas fa-camera-retro text-purple-600 text-2xl"></i>
+                    <i class="fas fa-camera-retro text-purple-600 text-2xl floating"></i>
                     <span class="font-bold text-xl text-gray-800">Creative Studio</span>
                 </div>
                 
@@ -37,10 +61,10 @@
                 
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="index.html" class="text-purple-600 font-medium border-b-2 border-purple-600 pb-1">Beranda</a>
-                    <a href="reservation.html" class="text-gray-600 hover:text-purple-600 font-medium">Reservasi</a>
-                    <a href="reservation-list.html" class="text-gray-600 hover:text-purple-600 font-medium">Daftar Reservasi</a>
-                    <a href="admin.html" class="text-gray-600 hover:text-purple-600 font-medium">Admin</a>
-                    <a href="https://wa.me/6281234567890" target="_blank" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition duration-300 flex items-center space-x-2">
+                    <a href="reservation.html" class="text-gray-600 hover:text-purple-600 font-medium transition duration-300">Reservasi</a>
+                    <a href="reservation-list.html" class="text-gray-600 hover:text-purple-600 font-medium transition duration-300">Daftar Reservasi</a>
+                    <a href="admin.html" class="text-gray-600 hover:text-purple-600 font-medium transition duration-300">Admin</a>
+                    <a href="https://wa.me/6281234567890" target="_blank" class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-4 py-2 rounded-lg hover:from-purple-700 hover:to-indigo-700 transition duration-300 flex items-center space-x-2 shadow-md">
                         <i class="fab fa-whatsapp"></i>
                         <span>Hubungi Kami</span>
                     </a>
@@ -49,9 +73,9 @@
             
             <div id="mobile-menu" class="md:hidden hidden pb-4">
                 <a href="index.html" class="block py-2 text-purple-600 font-medium">Beranda</a>
-                <a href="reservation.html" class="block py-2 text-gray-600 hover:text-purple-600">Reservasi</a>
-                <a href="reservation-list.html" class="block py-2 text-gray-600 hover:text-purple-600">Daftar Reservasi</a>
-                <a href="admin.html" class="block py-2 text-gray-600 hover:text-purple-600">Admin</a>
+                <a href="reservation.html" class="block py-2 text-gray-600 hover:text-purple-600 transition duration-300">Reservasi</a>
+                <a href="reservation-list.html" class="block py-2 text-gray-600 hover:text-purple-600 transition duration-300">Daftar Reservasi</a>
+                <a href="admin.html" class="block py-2 text-gray-600 hover:text-purple-600 transition duration-300">Admin</a>
                 <a href="https://wa.me/6281234567890" target="_blank" class="block py-2 text-purple-600 font-medium flex items-center space-x-2">
                     <i class="fab fa-whatsapp"></i>
                     <span>Hubungi Kami</span>
@@ -61,96 +85,148 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="gradient-bg text-white py-20">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <h1 class="text-4xl md:text-6xl font-bold mb-6">Studio Kreatif Terbaik untuk Kebutuhan Anda</h1>
+    <section class="gradient-bg text-white py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="max-w-7xl mx-auto px-4 text-center relative z-10">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Studio Kreatif Terbaik untuk <span class="text-gradient bg-gradient-to-r from-yellow-300 to-orange-400">Kebutuhan Anda</span></h1>
             <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Tempat yang sempurna untuk fotografi, video shooting, podcast, dan berbagai aktivitas kreatif lainnya.</p>
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="reservation.html" class="bg-white text-purple-600 px-8 py-3 rounded-lg font-bold text-lg hover:bg-gray-100 transition duration-300">Reservasi Sekarang</a>
-                <a href="#gallery" class="border-2 border-white text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-white hover:text-purple-600 transition duration-300">Lihat Galeri</a>
+                <a href="reservation.html" class="bg-white text-purple-600 px-8 py-3 rounded-lg font-bold text-lg hover:bg-gray-100 transition duration-300 shadow-lg hover:shadow-xl">Reservasi Sekarang</a>
+                <a href="#gallery" class="glass-effect border-2 border-white text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-white hover:text-purple-600 transition duration-300">Lihat Galeri</a>
             </div>
         </div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute top-10 left-10 w-6 h-6 bg-white/20 rounded-full floating" style="animation-delay: 0s;"></div>
+        <div class="absolute top-20 right-20 w-4 h-4 bg-white/30 rounded-full floating" style="animation-delay: 0.5s;"></div>
+        <div class="absolute bottom-20 left-20 w-8 h-8 bg-white/10 rounded-full floating" style="animation-delay: 1s;"></div>
     </section>
 
     <!-- Features Section -->
-    <section class="py-16 bg-white">
+    <section class="py-20 bg-gradient-to-br from-white to-gray-50">
         <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Mengapa Memilih Studio Kami?</h2>
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Mengapa Memilih Studio Kami?</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Kami menyediakan pengalaman terbaik dengan fasilitas lengkap dan tim profesional</p>
+            </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-50 p-6 rounded-xl hover-lift text-center">
-                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-camera text-purple-600 text-2xl"></i>
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover-lift border border-gray-100">
+                    <div class="bg-gradient-to-r from-purple-500 to-indigo-600 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-md">
+                        <i class="fas fa-camera text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Perlengkapan Lengkap</h3>
-                    <p class="text-gray-600">Kami menyediakan berbagai perlengkapan profesional untuk mendukung aktivitas kreatif Anda.</p>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Perlengkapan Lengkap</h3>
+                    <p class="text-gray-600 text-center">Kami menyediakan berbagai perlengkapan profesional untuk mendukung aktivitas kreatif Anda dengan kualitas terbaik.</p>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-xl hover-lift text-center">
-                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-clock text-purple-600 text-2xl"></i>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover-lift border border-gray-100">
+                    <div class="bg-gradient-to-r from-orange-500 to-red-500 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-md">
+                        <i class="fas fa-clock text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Fleksibel 24/7</h3>
-                    <p class="text-gray-600">Buka 24 jam dengan sistem booking yang fleksibel sesuai kebutuhan Anda.</p>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Fleksibel 24/7</h3>
+                    <p class="text-gray-600 text-center">Buka 24 jam dengan sistem booking yang fleksibel sesuai kebutuhan Anda, kapan pun Anda membutuhkannya.</p>
                 </div>
-                <div class="bg-gray-50 p-6 rounded-xl hover-lift text-center">
-                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <i class="fas fa-users text-purple-600 text-2xl"></i>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover-lift border border-gray-100">
+                    <div class="bg-gradient-to-r from-green-500 to-teal-500 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-md">
+                        <i class="fas fa-users text-white text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Tim Profesional</h3>
-                    <p class="text-gray-600">Didukung oleh tim yang berpengalaman dan siap membantu kesuksesan project Anda.</p>
+                    <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Tim Profesional</h3>
+                    <p class="text-gray-600 text-center">Didukung oleh tim yang berpengalaman dan siap membantu kesuksesan project Anda dengan hasil maksimal.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="py-16 bg-gray-50">
+    <section id="gallery" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">Galeri Studio</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="rounded-xl overflow-hidden shadow-md hover-lift">
-                    <img src="https://images.unsplash.com/photo-1567593810070-7a5b697b5fea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Studio Interior" class="w-full h-64 object-cover">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Galeri Studio</h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:grid-auto-rows-[250px]">
+                <div class="rounded-2xl overflow-hidden shadow-lg md:col-span-2 md:row-span-2 cursor-pointer group relative">
+                    <img src="https://images.unsplash.com/photo-1567593810070-7a5b697b5fea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Studio Interior" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                 </div>
-                <div class="rounded-xl overflow-hidden shadow-md hover-lift">
-                    <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Studio Equipment" class="w-full h-64 object-cover">
+
+                <div class="rounded-2xl overflow-hidden shadow-lg cursor-pointer group relative">
+                    <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Studio Equipment" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                 </div>
-                <div class="rounded-xl overflow-hidden shadow-md hover-lift">
-                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Photoshoot Session" class="w-full h-64 object-cover">
+
+                <div class="rounded-2xl overflow-hidden shadow-lg cursor-pointer group relative">
+                    <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Photoshoot Session" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+
+                <div class="rounded-2xl overflow-hidden shadow-lg md:col-span-2 cursor-pointer group relative">
+                    <img src="https://images.unsplash.com/photo-1554034483-66a1a1829d75?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Podcast Setup" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                </div>
+
+                <div class="rounded-2xl overflow-hidden shadow-lg cursor-pointer group relative">
+                    <img src="https://images.unsplash.com/photo-1603468620905-87b0028b6f3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Creative Space" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                        <h3 class="text-white font-bold">Ruang Kreatif</h3>
+                    </div>
+                </div>
+                
+                <div class="rounded-2xl overflow-hidden shadow-lg cursor-pointer group relative">
+                    <img src="https://images.unsplash.com/photo-1599200263171-8043d0f44b9d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Lighting Setup" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Location & Contact -->
-    <section class="py-16 bg-white">
+    <section class="py-20 bg-gradient-to-br from-white to-gray-50">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <div>
                     <h2 class="text-3xl font-bold text-gray-800 mb-6">Lokasi & Kontak</h2>
-                    <div class="space-y-4">
-                        <div class="flex items-start space-x-4">
-                            <i class="fas fa-map-marker-alt text-purple-600 mt-1"></i>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
+                            <div class="bg-purple-100 p-3 rounded-lg">
+                                <i class="fas fa-map-marker-alt text-purple-600"></i>
+                            </div>
                             <div>
                                 <h3 class="font-bold text-gray-800">Alamat Studio</h3>
                                 <p class="text-gray-600">Jl. Contoh No. 123, Jakarta Selatan 12345</p>
                             </div>
                         </div>
-                        <div class="flex items-start space-x-4">
-                            <i class="fas fa-phone text-purple-600 mt-1"></i>
+                        <div class="flex items-start space-x-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
+                            <div class="bg-blue-100 p-3 rounded-lg">
+                                <i class="fas fa-phone text-blue-600"></i>
+                            </div>
                             <div>
                                 <h3 class="font-bold text-gray-800">Telepon</h3>
                                 <p class="text-gray-600">+62 812-3456-7890</p>
                             </div>
                         </div>
-                        <div class="flex items-start space-x-4">
-                            <i class="fab fa-whatsapp text-purple-600 mt-1"></i>
+                        <div class="flex items-start space-x-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
+                            <div class="bg-green-100 p-3 rounded-lg">
+                                <i class="fab fa-whatsapp text-green-600"></i>
+                            </div>
                             <div>
                                 <h3 class="font-bold text-gray-800">WhatsApp</h3>
                                 <p class="text-gray-600">+62 812-3456-7890</p>
                                 <a href="https://wa.me/6281234567890" target="_blank" class="text-purple-600 hover:text-purple-800 font-medium mt-1 inline-block">Hubungi via WhatsApp</a>
                             </div>
                         </div>
-                        <div class="flex items-start space-x-4">
-                            <i class="fab fa-instagram text-purple-600 mt-1"></i>
+                        <div class="flex items-start space-x-4 p-4 bg-white rounded-xl shadow-sm border border-gray-100">
+                            <div class="bg-pink-100 p-3 rounded-lg">
+                                <i class="fab fa-instagram text-pink-600"></i>
+                            </div>
                             <div>
                                 <h3 class="font-bold text-gray-800">Instagram</h3>
                                 <p class="text-gray-600">@creativestudio</p>
@@ -159,10 +235,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-gray-100 rounded-xl p-6">
-                    <h3 class="text-xl font-bold text-gray-800 mb-4">Peta Lokasi</h3>
-                    <div class="bg-gray-300 h-64 rounded-lg flex items-center justify-center">
-                        <p class="text-gray-600">[Peta akan ditampilkan di sini]</p>
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Peta Lokasi</h3>
+                        <div class="bg-gradient-to-br from-purple-100 to-indigo-100 h-64 rounded-xl flex flex-col items-center justify-center p-6 text-center">
+                            <i class="fas fa-map-marked-alt text-4xl text-purple-600 mb-4"></i>
+                            <p class="text-gray-700 font-medium">Studio Creative</p>
+                            <p class="text-gray-600 text-sm mt-2">Jl. Contoh No. 123, Jakarta Selatan</p>
+                            <a href="#" class="mt-4 bg-purple-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-purple-700 transition duration-300">Buka di Google Maps</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -170,14 +251,25 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-16 bg-gradient-to-r from-purple-500 to-indigo-600">
-        <div class="max-w-7xl mx-auto px-4 text-center text-white">
-            <h2 class="text-3xl font-bold mb-4">Siap Membuat Karya Terbaik Anda?</h2>
-            <p class="text-xl mb-8 max-w-2xl mx-auto">Booking studio sekarang dan wujudkan ide kreatif Anda dengan fasilitas terbaik.</p>
-            <a href="reservation.html" class="bg-white text-purple-600 px-8 py-3 rounded-lg font-bold text-lg hover:bg-gray-100 transition duration-300 inline-block">
-                Reservasi Sekarang
-            </a>
+    <section class="py-20 bg-gradient-to-r from-purple-500 to-indigo-600 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/10"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center text-white relative z-10">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4">Siap Membuat Karya Terbaik Anda?</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Booking studio sekarang dan wujudkan ide kreatif Anda dengan fasilitas terbaik dan tim profesional kami.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="reservation.html" class="bg-white text-purple-600 px-8 py-3 rounded-lg font-bold text-lg hover:bg-gray-100 transition duration-300 shadow-lg">
+                    Reservasi Sekarang
+                </a>
+                <a href="https://wa.me/6281234567890" target="_blank" class="glass-effect border-2 border-white text-white px-8 py-3 rounded-lg font-bold text-lg hover:bg-white hover:text-purple-600 transition duration-300">
+                    Konsultasi Gratis
+                </a>
+            </div>
         </div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute top-10 left-10 w-6 h-6 bg-white/20 rounded-full floating" style="animation-delay: 0s;"></div>
+        <div class="absolute top-20 right-20 w-4 h-4 bg-white/30 rounded-full floating" style="animation-delay: 0.5s;"></div>
+        <div class="absolute bottom-20 left-20 w-8 h-8 bg-white/10 rounded-full floating" style="animation-delay: 1s;"></div>
     </section>
 
     <!-- Footer -->
